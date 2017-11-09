@@ -4,11 +4,12 @@ MAINTAINER aheil
 
 ENV TS_VERSION LATEST
 ENV LANG C.UTF-8
+ENV PUID 1101
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y install bzip2 wget ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
-    && useradd -M -s /bin/false --uid 1101 teamspeak3 \
+    && useradd -M -s /bin/false --uid ${PUID} teamspeak3 \
     && mkdir /data \
     && chown teamspeak3:teamspeak3 /data
 
